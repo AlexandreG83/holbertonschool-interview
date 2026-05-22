@@ -19,8 +19,7 @@ def canUnlockAll(boxes):
         return True
 
     n = len(boxes)
-    # we start with box 0 unlocked
-    opened = set([0])  
+    opened = set([0])   # we start with box 0 unlockeds
     keys = set(boxes[0])
 
     while keys:
