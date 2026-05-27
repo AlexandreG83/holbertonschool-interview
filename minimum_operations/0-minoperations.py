@@ -12,11 +12,13 @@ factor → 1 Copy All and many Paste
 
 
 def minOperations(n):
-    operations = 0
-    factor = 2
+    """ Calculate the fewest number of operations """
 
     if n <= 1:
         return 0
+
+    operations = 0
+    factor = 2
 
     while n > 1:
         while n % factor == 0:
