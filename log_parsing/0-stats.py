@@ -39,8 +39,9 @@ def print_stats(total_bytes, status_counts):
     print(f"File size: {total_bytes}")
 
     for code in sorted(status_counts.keys()):
-        if status_counts[code] > 0:
-            print(f"{code}: {status_counts[code]}")
+        if status_counts[code] == 0:
+            continue
+        print(f"{code}: {status_counts[code]}")
 
 
 def run():
