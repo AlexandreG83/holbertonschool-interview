@@ -69,8 +69,8 @@ def run():
     except KeyboardInterrupt:
         print_stats(total_size, counters)
         raise
-
-    print_stats(total_size, counters)
+    else:
+        print_stats(total_size, counters)
 
 
 if __name__ == "__main__":
