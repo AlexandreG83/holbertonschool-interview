@@ -46,7 +46,7 @@ def print_stats(total_bytes, status_counts):
 
 def run():
     """Main loop reading stdin and triggering periodic reporting."""
-    tracked_codes = {200, 301, 400, 401, 403, 404, 405, 500}
+    tracked_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 
     counters = defaultdict(int)
     total_size = 0
@@ -56,13 +56,13 @@ def run():
         for raw in sys.stdin:
             line_counter += 1
 
-            status, size = extract_metrics(raw.strip())
+            res = extract_metrics(raw.strip())
 
-            if size is not None:
+            if res != (None, None):
+                status, size = res
                 total_size += size
-
-            if status in tracked_codes:
-                counters[status] += 1
+                if status in tracked_codes:
+                    counters[status] += 1
 
             if line_counter % 10 == 0:
                 print_stats(total_size, counters)
